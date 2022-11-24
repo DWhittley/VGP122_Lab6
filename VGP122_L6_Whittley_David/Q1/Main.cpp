@@ -5,3 +5,15 @@ b. Create a constructor that prevents a 0 denominator in a fraction, reduces or 
 fractions that are not in reduced form and avoids negative denominators.
 c. Overload the addition, subtraction, multiplication and division operators for this class.
 d. Overload the relational and equality operators for this class. */
+
+#include <iostream>
+
+#include "RationalNumber.h"
+#include "Fractions.h"
+
+using namespace std;
+
+double main()
+{
+	return 0;
+}
