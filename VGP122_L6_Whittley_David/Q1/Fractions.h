@@ -9,4 +9,8 @@ public:
 	~Fractions();
 
 	void print();
+
+	
+
+
 };

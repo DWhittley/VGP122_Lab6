@@ -13,7 +13,46 @@ d. Overload the relational and equality operators for this class. */
 
 using namespace std;
 
-double main()
+int main()
 {
+	int a = 0, b = 1;
+	RationalNumber F1, F2;
+
+	cout << "Enter the numerator of the first fraction: ";
+	cin >> a;
+
+	F1.setNum(a);
+
+	cout << "Enter the denominator of the first fraction: ";
+	cin >> b;
+
+	F1.setDen(b);
+
+	cout << "Enter the numerator of the second fraction: ";
+	cin >> a;
+
+	F2.setNum(a);
+
+	cout << "Enter the denominator of the second fraction: ";
+	cin >> b;
+
+	F2.setDen(b);
+
+	F1.Add(F2);
+	F1.Subtract(F2);
+	F1.Multiply(F2);
+	F1.Divide(F2);
+	F1.GCD(F1);
+	F1.GCD(F2);
+
+
+	cout << "\n--FIRST FRACTION--" << endl;
+	F1.DisplayFract(F1);
+	F1.DisplayDouble(F1);
+
+	cout << "\n--SECOND FRACTION--" << endl;
+	F2.DisplayFract(F2);
+	F2.DisplayDouble(F2);
+
 	return 0;
 }
