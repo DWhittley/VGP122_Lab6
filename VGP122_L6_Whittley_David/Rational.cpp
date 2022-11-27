@@ -224,5 +224,5 @@ void Rational<T>::DisplayFract(Rational f1) const
 }
 
 template class Rational<int>;
-template class Rational<double>;
-template class Rational<float>;
+//template class Rational<double>;
+//template class Rational<float>;
