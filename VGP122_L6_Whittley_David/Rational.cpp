@@ -64,7 +64,7 @@ template<typename T>
 void Rational<T>::GCD(Rational g1)
 {
 
-	int temp = 1, a = g1.getNum(), b = g1.getDen();
+	T temp = 1, a = g1.getNum(), b = g1.getDen();
 
 	if (a < 0) {
 		a *= 1;
@@ -152,8 +152,8 @@ void Rational<T>::operator*(Rational<T> m1)
 template<typename T>
 void Rational<T>::operator/(Rational<T> d1)
 {
-	int cdd = getDen() * d1.getNum();
-	int Num6 = getNum() * d1.getDen();
+	T cdd = getDen() * d1.getNum();
+	T Num6 = getNum() * d1.getDen();
 
 	cout << "DIVISION: (" << getNum() << " / " << getDen() << ") / (" << d1.getNum() << " / " << d1.getDen() << ") = ("
 		<< (Num6) / Simplify(abs(Num6), abs(cdd)) << " / " << cdd / Simplify(abs(Num6), abs(cdd)) << ")" << endl;
