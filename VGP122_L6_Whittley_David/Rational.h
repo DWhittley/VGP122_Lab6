@@ -11,7 +11,6 @@ public:
 
 	// Constructor & Destructor
 	Rational(T numerator = 0, T denominator = 1);
-	Rational(const T aRational); // Copy Constructor
 	~Rational();
 
 	// Setters
@@ -34,12 +33,11 @@ public:
 	bool operator<(Rational o1);
 	bool operator>=(Rational o1);
 	bool operator<=(Rational o1);
-	void GCD(T g1);			// Greatest Common Divider
+	void GCD(Rational g1);			// Greatest Common Divider
 	T Simplify(T a, T b);
 
 	// Display
-	void DisplayFract(T f1) const;
-	void DisplayDouble(T f2) const;
+	void DisplayFract(Rational f1) const;
 
 
 private:

@@ -15,7 +15,7 @@ Rational<T>::Rational(T numerator, T denominator)
 		exit(-1);
 	}
 	else {
-		int temp = 1, x, y, r;
+		T temp = 1, x, y, r;
 
 		if (numerator > denominator) {
 			x = numerator;
@@ -35,12 +35,6 @@ Rational<T>::Rational(T numerator, T denominator)
 		this->numerator = numerator / x;
 		this->denominator = denominator / x;
 	}
-}
-template<typename T>
-Rational<T>::Rational(const T aRational) {
-
-	setNum(aRational.getNum());
-	setDen(aRational.getDen());
 }
 template<typename T>
 Rational<T>::~Rational()
@@ -67,7 +61,7 @@ T Rational<T>::getDen() const
 	return denominator;
 }
 template<typename T>
-void Rational<T>::GCD(T g1)
+void Rational<T>::GCD(Rational g1)
 {
 
 	int temp = 1, a = g1.getNum(), b = g1.getDen();
@@ -224,18 +218,9 @@ bool Rational<T>::operator<=(Rational<T> o1){
 	}
 }
 template<typename T>
-void Rational<T>::DisplayFract(T f1) const
+void Rational<T>::DisplayFract(Rational f1) const
 {
 	cout << "DISPLAY FRACTION: " << f1.getNum() << " / " << f1.getDen() << endl;
-}
-template<typename T>
-void Rational<T>::DisplayDouble(T f2) const // displays float after casting to double
-{
-
-	T q1 = (T)f2.getNum();
-	T q2 = (T)f2.getDen();
-
-	cout << "DISPLAY DOUBLE: " << f2.getNum() << " / " << f2.getDen() << " = " << q1 / q2 << endl;
 }
 
 template class Rational<int>;
