@@ -96,7 +96,7 @@ int Rational::Simplify(int a, int b)
 }
 
 
-void Rational::Add(Rational a1)
+void Rational::operator+(Rational a1)
 {
 
 	int cd = getDen() * a1.getDen();
@@ -109,7 +109,7 @@ void Rational::Add(Rational a1)
 
 }
 
-void Rational::Subtract(Rational s1)
+void Rational::operator-(Rational s1)
 {
 
 	int cds = getDen() * s1.getDen();
@@ -120,7 +120,7 @@ void Rational::Subtract(Rational s1)
 		<< (Num3 - Num4) / Simplify(abs(Num3 - Num4), abs(cds)) << " / " << cds / Simplify(abs(Num3 - Num4), abs(cds)) << ")" << endl;
 }
 
-void Rational::Multiply(Rational m1)
+void Rational::operator*(Rational m1)
 {
 
 	int cdr = getDen() * m1.getDen();
@@ -130,7 +130,7 @@ void Rational::Multiply(Rational m1)
 		<< (Num5) / Simplify(abs(Num5), abs(cdr)) << " / " << cdr / Simplify(abs(Num5), abs(cdr)) << ")" << endl;
 }
 
-void Rational::Divide(Rational d1)
+void Rational::operator/(Rational d1)
 {
 	int cdd = getDen() * d1.getNum();
 	int Num6 = getNum() * d1.getDen();

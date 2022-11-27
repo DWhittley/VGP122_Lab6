@@ -36,10 +36,10 @@ int main() {
 
 	F2.setDen(b);
 
-	F1.Add(F2);
-	F1.Subtract(F2);
-	F1.Multiply(F2);
-	F1.Divide(F2);
+	F1 + F2;
+	F1 - F2;
+	F1 * F2;
+	F1 / F2;
 	F1.GCD(F1);
 	F1.GCD(F2);
 	

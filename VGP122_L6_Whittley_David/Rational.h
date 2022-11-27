@@ -22,10 +22,10 @@ public:
 	int getDen() const;
 
 	// Math
-	void Add(Rational a1);
-	void Subtract(Rational s1);
-	void Multiply(Rational m1);
-	void Divide(Rational d1);
+	void operator+(Rational a1);
+	void operator-(Rational s1);
+	void operator*(Rational m1);
+	void operator/(Rational d1);
 	void GCD(Rational g1);			// Greatest Common Divider
 	int Simplify(int a, int b);
 
