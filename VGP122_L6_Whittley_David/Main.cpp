@@ -13,44 +13,39 @@ using namespace std;
 
 int main() {
 
-	int a = 0, b = 1;
-	Rational F1, F2;
+	int a = 0, b = 1, c = 0, d = 1;
 
 	cout << "Enter the numerator of the first fraction: ";
 	cin >> a;
 
-	F1.setNum(a);
-
 	cout << "Enter the denominator of the first fraction: ";
 	cin >> b;
 
-	F1.setDen(b);
+	Rational<int> F1 = Rational<int>(a, b);
 
 	cout << "Enter the numerator of the second fraction: ";
-	cin >> a;
-
-	F2.setNum(a);
+	cin >> c;
 
 	cout << "Enter the denominator of the second fraction: ";
-	cin >> b;
+	cin >> d;
 
-	F2.setDen(b);
+	Rational<int> F2 = Rational<int>(c, d);
 
+	//c,
 	F1 + F2;
 	F1 - F2;
 	F1 * F2;
 	F1 / F2;
-	F1.GCD(F1);
-	F1.GCD(F2);
-	
+	//F1 = F2;
+	//d,
+	cout << (F1 == F2);
+	cout << (F1 != F2);
+	cout << (F1 < F2);
+	cout << (F1 > F2);
+	cout << (F1 <= F2);
+	cout << (F1 >= F2);
 
-	cout << "\n--FIRST FRACTION--" << endl;
-	F1.DisplayFract(F1);
-	F1.DisplayDouble(F1);
 
-	cout << "\n--SECOND FRACTION--" << endl;
-	F2.DisplayFract(F2);
-	F2.DisplayDouble(F2);
 
 	return 0;
 }

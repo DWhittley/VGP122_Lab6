@@ -5,43 +5,69 @@
 
 using namespace std;
 
-Rational::Rational(int numerator, int denominator) : numerator(numerator), denominator(denominator) /* short hand way to init memeber variables*/
+/*b. Create a constructor that prevents a 0 denominator in a fraction, reduces or simplifies
+fractions that are not in reduced form and avoids negative denominators.*/
+template<typename T>
+Rational<T>::Rational(T numerator, T denominator)
 {
-}
+	if (denominator <= 0) {
+		cout << "Can't devide with zero restart program";
+		exit(-1);
+	}
+	else {
+		int temp = 1, x, y, r;
 
-Rational::Rational(const Rational& aRational) {
+		if (numerator > denominator) {
+			x = numerator;
+			y = denominator;
+		} else {
+			x = denominator;
+			y = numerator;
+		}
+
+		while (y != 0)
+		{
+			r = x % y;
+			x = y;
+			y = r;
+		}
+
+		this->numerator = numerator / x;
+		this->denominator = denominator / x;
+	}
+}
+template<typename T>
+Rational<T>::Rational(const T aRational) {
 
 	setNum(aRational.getNum());
 	setDen(aRational.getDen());
 }
-
-Rational::~Rational()
+template<typename T>
+Rational<T>::~Rational()
 {
 }
-
-void Rational::setNum(int a)
+template<typename T>
+void Rational<T>::setNum(T a)
 {
 	numerator = a;
 }
-
-void Rational::setDen(int b)
+template<typename T>
+void Rational<T>::setDen(T b)
 {
 	denominator = b;
 }
-
-
-int Rational::getNum() const
+template<typename T>
+T Rational<T>::getNum() const
 {
 	return numerator;
 }
-
-int Rational::getDen() const
+template<typename T>
+T Rational<T>::getDen() const
 {
 	return denominator;
 }
-
-
-void Rational::GCD(Rational g1)
+template<typename T>
+void Rational<T>::GCD(T g1)
 {
 
 	int temp = 1, a = g1.getNum(), b = g1.getDen();
@@ -64,12 +90,12 @@ void Rational::GCD(Rational g1)
 		<< g1.getDen() / temp << ") using the GCD " << temp << "." << endl;
 }
 
-
-int Rational::Simplify(int a, int b)
+template<typename T>
+T Rational<T>::Simplify(T a, T b)
 {
 	Rational sim;
 
-	int temp = 1, x, y, r;
+	T temp = 1, x, y, r;
 
 	if (a > b)
 	{
@@ -95,42 +121,42 @@ int Rational::Simplify(int a, int b)
 
 }
 
-
-void Rational::operator+(Rational a1)
+template<typename T>
+void Rational<T>::operator+(Rational<T> a1)
 {
 
-	int cd = getDen() * a1.getDen();
-	int Num1 = getNum() * a1.getDen();
-	int Num2 = a1.getNum() * getDen();
+	T cd = getDen() * a1.getDen();
+	T Num1 = getNum() * a1.getDen();
+	T Num2 = a1.getNum() * getDen();
 
 
 	cout << "\nSUM: (" << getNum() << " / " << getDen() << ") + (" << a1.getNum() << " / " << a1.getDen() << ") = ("
 		<< (Num1 + Num2) / Simplify(abs(Num1 + Num2), abs(cd)) << " / " << cd / Simplify(abs(Num1 + Num2), abs(cd)) << ")" << endl;
 
 }
-
-void Rational::operator-(Rational s1)
+template<typename T>
+void Rational<T>::operator-(Rational<T> s1)
 {
 
-	int cds = getDen() * s1.getDen();
-	int Num3 = getNum() * s1.getDen();
-	int Num4 = s1.getNum() * getDen();
+	T cds = getDen() * s1.getDen();
+	T Num3 = getNum() * s1.getDen();
+	T Num4 = s1.getNum() * getDen();
 
 	cout << "SUBTRACTION: (" << getNum() << " / " << getDen() << ") - (" << s1.getNum() << " / " << s1.getDen() << ") = ("
 		<< (Num3 - Num4) / Simplify(abs(Num3 - Num4), abs(cds)) << " / " << cds / Simplify(abs(Num3 - Num4), abs(cds)) << ")" << endl;
 }
-
-void Rational::operator*(Rational m1)
+template<typename T>
+void Rational<T>::operator*(Rational<T> m1)
 {
 
-	int cdr = getDen() * m1.getDen();
-	int Num5 = getNum() * m1.getNum();
+	T cdr = getDen() * m1.getDen();
+	T Num5 = getNum() * m1.getNum();
 
 	cout << "MULTIPLICATION: (" << getNum() << " / " << getDen() << ") * (" << m1.getNum() << " / " << m1.getDen() << ") = ("
 		<< (Num5) / Simplify(abs(Num5), abs(cdr)) << " / " << cdr / Simplify(abs(Num5), abs(cdr)) << ")" << endl;
 }
-
-void Rational::operator/(Rational d1)
+template<typename T>
+void Rational<T>::operator/(Rational<T> d1)
 {
 	int cdd = getDen() * d1.getNum();
 	int Num6 = getNum() * d1.getDen();
@@ -138,19 +164,80 @@ void Rational::operator/(Rational d1)
 	cout << "DIVISION: (" << getNum() << " / " << getDen() << ") / (" << d1.getNum() << " / " << d1.getDen() << ") = ("
 		<< (Num6) / Simplify(abs(Num6), abs(cdd)) << " / " << cdd / Simplify(abs(Num6), abs(cdd)) << ")" << endl;
 }
+template<typename T>
+void Rational<T>::operator=(Rational<T> e1) {
+	this->numerator = e1.numerator;
+	this->denominator = e1.denominator;
+	DisplayFract(*this);
+}
+template<typename T>
+bool Rational<T>::operator==(Rational<T> o1) {
+	if (this->numerator == o1.numerator && this->denominator == o1.denominator) {
+		return true;
+	} else {
+		return false;
+	}
+}
+template<typename T>
+bool Rational<T>::operator!=(Rational<T> o1){
+	if (!(this->numerator == o1.numerator && this->denominator == o1.denominator)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+template<typename T>
+bool Rational<T>::operator>(Rational<T> o1){
+	if ((this->numerator * o1.denominator) > (o1.numerator * this->denominator)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+template<typename T>
+bool Rational<T>::operator<(Rational<T> o1){
+	if ((this->numerator * o1.denominator) < (o1.numerator * this->denominator)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+template<typename T>
+bool Rational<T>::operator>=(Rational<T> o1){
+	if (((this->numerator * o1.denominator) > (o1.numerator * this->denominator)) || (this->numerator == o1.numerator && this->denominator == o1.denominator)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 
-
-
-void Rational::DisplayFract(Rational f1) const
+}
+template<typename T>
+bool Rational<T>::operator<=(Rational<T> o1){
+	if (((this->numerator * o1.denominator) < (o1.numerator * this->denominator)) || (this->numerator == o1.numerator && this->denominator == o1.denominator)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+template<typename T>
+void Rational<T>::DisplayFract(T f1) const
 {
 	cout << "DISPLAY FRACTION: " << f1.getNum() << " / " << f1.getDen() << endl;
 }
-
-void Rational::DisplayDouble(Rational f2) const // displays float after casting to double
+template<typename T>
+void Rational<T>::DisplayDouble(T f2) const // displays float after casting to double
 {
 
-	double q1 = (double)f2.getNum();
-	double q2 = (double)f2.getDen();
+	T q1 = (T)f2.getNum();
+	T q2 = (T)f2.getDen();
 
 	cout << "DISPLAY DOUBLE: " << f2.getNum() << " / " << f2.getDen() << " = " << q1 / q2 << endl;
 }
+
+template class Rational<int>;
+template class Rational<double>;
+template class Rational<float>;
