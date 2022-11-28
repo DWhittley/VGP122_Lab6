@@ -38,14 +38,12 @@ int main() {
 	F1 / F2;
 	//F1 = F2;
 	//d,
-	cout << (F1 == F2);
-	cout << (F1 != F2);
-	cout << (F1 < F2);
-	cout << (F1 > F2);
-	cout << (F1 <= F2);
-	cout << (F1 >= F2);
-
-
+	cout << "The two fractions are equal?: " << (F1 == F2) << endl;
+	cout << "The two fractions are not equal?: " << (F1 != F2) << endl;
+	cout << "The first fraction is less than the second fraction?: " << (F1 < F2) << endl;
+	cout << "The first fraction is greater than the second fraction?: " << (F1 > F2) << endl;
+	cout << "The first fraction is less than or equal to the second fraction?: " << (F1 <= F2) << endl;
+	cout << "The first fraction is greather than or equal to the second fraction?: " << (F1 >= F2) << endl;
 
 	return 0;
 }
