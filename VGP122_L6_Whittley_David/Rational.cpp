@@ -27,7 +27,7 @@ Rational<T>::Rational(T numerator, T denominator)
 
 		while (y != 0)
 		{
-			r = x % y;
+			r = fmod(x, y);
 			x = y;
 			y = r;
 		}
@@ -76,7 +76,7 @@ void Rational<T>::GCD(Rational g1)
 	while (b > 0)
 	{
 		temp = b;
-		b = a % temp;
+		b = fmod(a, temp);
 		a = temp;
 	}
 
@@ -106,7 +106,7 @@ T Rational<T>::Simplify(T a, T b)
 
 	while (y != 0)
 	{
-		r = x % y;
+		r = fmod(x, y);
 		x = y;
 		y = r;
 	}
@@ -224,5 +224,5 @@ void Rational<T>::DisplayFract(Rational f1) const
 }
 
 template class Rational<int>;
-//template class Rational<double>;
-//template class Rational<float>;
+template class Rational<double>;
+template class Rational<float>;
